@@ -5,7 +5,7 @@ from models.Plano import Plano
 
 class Associado:
     def __init__(self,
-            cpf = 11111111111,
+            cpf = 111111111,
             nome = 'Fulano da Silva',
             data_nasc = '1988-12-20',
             status = True,
@@ -110,5 +110,15 @@ class AssociadoStore(Store):
                     'plano': result[4]
             } 
 
-
-            
+    def get_associado_clinica(self, associado):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(select_associado_clinica % int(associado.toTuple()[-1]))
+            result = cursor.fetchone()
+        except Exception as e:
+            print("Erro ao selecionar registros de associados:", e)
+        else:
+            return {
+                    'razao_social': result[0],
+                    'endereco': result[1]
+            } 

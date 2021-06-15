@@ -5,9 +5,9 @@
     <div class="nav-wrapper">
       <a href="#" class="brand-logo right">ACME</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li class="active"><a href="/associado">Associado</a></li>
+				<li><a href=" {{ url_for('associado.associado', cpf=request.args.get('cpf') )  }} ">Associado</a></li>
         <li><a href="/associado/agendamento">Agendamento</a></li>
-				<li><a href='{{ url_for("associado.associado_clinicas", cpf=context.cpf)  }}'>Clinicas</a></li>
+        <li class="active"><a href="/associado/clinicas">Clinicas</a></li>
       </ul>
     </div>
   </nav>
@@ -22,22 +22,16 @@
 			<table>
         <thead>
           <tr>
-              <th>CPF</th>
-              <th>Nome</th>
-              <th>Data de Nascimento</th>
-							<th>Status</th>
-							<th>Plano</th>
+              <th>Razão Social</th>
+              <th>Endereço</th>
           </tr>
         </thead>
 
         <tbody>
 						
           <tr>
-						<td>{{ context.cpf  }}</td>
-						<td>{{ context.nome }}</td>
-						<td>{{ context.data_nasc }}</td>
-						<td>{{ context.status }}</td>
-						<td>{{ context.plano}}</td>
+						<td>{{ context.razao_social  }}</td>
+						<td>{{ context.endereco }}</td>
           </tr>
 
 

@@ -60,6 +60,7 @@ if __name__ == '__main__':
             cursor.execute(create_table_tratamento_item)
             cursor.execute(create_table_tratamentos)
             cursor.execute(create_table_users)
+            cursor.execute(create_table_credenciado_especialidades)
             store.complete()
         except Exception as e:
             print(e)

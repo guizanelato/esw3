@@ -18,3 +18,13 @@ select_associado_com_plano = """
     WHERE a.cpf = %d
 
 """
+
+
+select_associado_clinica = """
+    SELECT c.razao_social, c.endereco
+    FROM credenciados as c
+    INNER JOIN credenciado_plano as cp on cp.credenciado_id=c.id
+    INNER JOIN associados as a on a.plano_id = cp.plano_id
+    WHERE a.plano_id = %d
+
+"""

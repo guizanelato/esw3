@@ -23,9 +23,7 @@ create_table_credenciados = """
     CREATE TABLE credenciados(
         id integer primary key not null,
         razao_social text,
-        endereco text,
-        especialidade_id integer,
-        FOREIGN KEY(especialidade_id) REFERENCES especialidades(id)
+        endereco text
         
     );
 
@@ -65,6 +63,16 @@ create_table_credenciado_planos = """
 
     );
 """
+
+create_table_credenciado_especialidades = """
+    CREATE TABLE credenciado_especialidades(
+        credenciado_id integer not null,
+        especialidade_id integet not null,
+        FOREIGN KEY(credenciado_id) REFERENCES credenciados(id),
+        FOREIGN KEY(especialidade_id) REFERENCES especialidades(id)
+    );
+"""
+
 
 create_table_agendamentos = """
     CREATE TABLE agendamentos(
