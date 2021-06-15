@@ -1,0 +1,54 @@
+{% extends "base.html"  %}
+
+{% block nav %}
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">ACME</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li class="active"><a href="/associado">Associado</a></li>
+        <li><a href="/associado/agendamento">Agendamento</a></li>
+        <li><a href="/associado/clinicas">Clinicas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+{% endblock  %}
+
+
+
+{% block content %}
+
+	<div class="container">
+			<table>
+        <thead>
+          <tr>
+              <th>CPF</th>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+							<th>Status</th>
+							<th>Ativo</th>
+							<th>Plano</th>
+          </tr>
+        </thead>
+
+        <tbody>
+						
+          <tr>
+						<td>{{ context.cpf  }}</td>
+						<td>{{ context.nome }}</td>
+						<td>{{ context.data_nasc }}</td>
+						<td>{{ context.status }}</td>
+						<td>{{ context.plano}}</td>
+          </tr>
+
+
+        </tbody>
+
+      </table>
+  </div>
+
+	
+
+
+
+{% endblock  %}

@@ -1,23 +1,19 @@
 
 from flask import Flask, render_template
 from routes.auth import blueprint as auth
+from routes.associado import blueprint as associado
 
+from models.Associado import Associado, AssociadoStore
+from models.Plano import Plano, PlanoStore
+from models.User import User,UserStore
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
 app.register_blueprint(auth)
+app.register_blueprint(associado)
 
-
-@app.route("/listar_paciente")
-def get_pacientes():
-    return render_template("listar_paciente.html")
-
-@app.route("/listar_clinica")
-def get_clinicas():
-    return render_template("listar_clinica.html")
 
 @app.route("/teste")
-def get_teste():
-    pass
-
+def teste():
+    return render_template("listar_clinica.html")

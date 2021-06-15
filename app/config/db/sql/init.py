@@ -1,13 +1,3 @@
-create_table_users = """
-    CREATE TABLE users(
-        id integer primary key autoincrement,
-        login text,
-        senha text,
-        tipo text
-
-    );
-
-"""
 
 
 create_table_especialidades = """
@@ -48,6 +38,19 @@ create_table_associados = """
         status boolean,
         plano_id integer,
         FOREIGN KEY(plano_id) references planos(id)
+    );
+
+"""
+create_table_users = """
+    CREATE TABLE users(
+        id integer primary key autoincrement,
+        login text,
+        senha text,
+        tipo text,
+        cpf integer,
+        FOREIGN KEY(cpf) references associados(cpf)
+    
+
     );
 
 """

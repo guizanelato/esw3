@@ -6,12 +6,14 @@ class User:
     def __init__(self,
             login = 'guilherme.zanelato@gmail.com',
             senha = '123qwe123',
-            tipo = 'associado'
+            tipo = 'associado',
+            cpf = 111111111
             ):
 
         self._login = login
         self._senha = senha
         self._tipo = tipo
+        self._cpf = cpf
 
     def toTuple(self):
         return tuple(map(lambda x: x, self.__dict__.values()))
@@ -44,6 +46,14 @@ class User:
             raise ValueError('Tipo informado inválido')
         self._tipo = tipo
 
+    @property
+    def cpf(self):
+        return self._cpf
+
+    @cpf.setter
+    def cpf(self, cpf):
+        self._cpf = cpf
+
         
 class UserStore(Store):
     def add_user(self, user):
@@ -67,7 +77,8 @@ class UserStore(Store):
                     {
                         'login': result[1],
                         'senha': result[2],
-                        'tipo': result[3]
+                        'tipo': result[3],
+                        'cpf': result[4]
                     }
                 ]
             return {

@@ -1,8 +1,8 @@
 
 
 insert_into_users = """
-    INSERT INTO users (login, senha, tipo)
-    VALUES (? , ? , ? )
+    INSERT INTO users (login, senha, tipo, cpf)
+    VALUES (? , ? , ?, ? )
 
 """
 

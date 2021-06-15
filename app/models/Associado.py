@@ -5,7 +5,7 @@ from models.Plano import Plano
 
 class Associado:
     def __init__(self,
-            cpf = '99999999999',
+            cpf = 11111111111,
             nome = 'Fulano da Silva',
             data_nasc = '1988-12-20',
             status = True,
@@ -29,8 +29,6 @@ class Associado:
 
     @cpf.setter
     def cpf(self, cpf):
-        if len(cpf) > 11:
-            raise ValueError('CPF incorreto - contém 11 dígitos')
         self._cpf = cpf
 
 
@@ -96,6 +94,21 @@ class AssociadoStore(Store):
                 } for associado in result
            ]
 
+    def get_associado_plano(self, associado):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(select_associado_com_plano % associado.toTuple()[0])
+            result = cursor.fetchone()
+        except Exception as e:
+            print("Erro ao selecionar registros de associados:", e)
+        else:
+            return {
+                    'cpf': result[0],
+                    'nome': result[1],
+                    'data_nasc': result[2],
+                    'status': 'Ativo' if result[3] == 1 else 'Inativo',
+                    'plano': result[4]
+            } 
 
 
             

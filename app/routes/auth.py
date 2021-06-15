@@ -1,12 +1,12 @@
 
-from flask import Blueprint, jsonify, redirect, render_template, request 
+from flask import Blueprint, jsonify, redirect, render_template, request, url_for
 
 from models.User import User,UserStore
 
 blueprint = Blueprint("auth", __name__)
 
 @blueprint.route("/", methods = ['GET', 'POST'])
-def auth():
+def sign_in():
     if request.method == 'POST':
         u = User(
             login=request.form.get('email'),
@@ -20,16 +20,16 @@ def auth():
         if 'error-code' not in result:
             login = result[0]['login']
             senha = result[0]['senha']
-            validacao = u.login == login and u.senha == senha
+            credenciais = u.login == login and u.senha == senha
             
-            if validacao:
+            if credenciais:
                 if u.tipo == 'associado':
-                  return  redirect('/associado')
+                    return  redirect(url_for('associado.associado', cpf=result[0]['cpf']))
                 return redirect('/credenciado')
             
             return jsonify({'mensagem:': 'Usuário ou Senha Inválidos', 'error-code': 1})
     
-    return render_template("login.html")
+    return render_template("sign_in.html")
 
 
 

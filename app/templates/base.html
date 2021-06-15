@@ -12,17 +12,9 @@
 
   <body>
       
-
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo right">ACME</a>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="/listar_paciente">Paciente</a></li>
-        <li><a href="/listar_agendamento">Agendamento</a></li>
-        <li><a href="/listar_clinica">Clinicas</a></li>
-      </ul>
-    </div>
-  </nav>
+  {% block nav  %}
+	
+	{% endblock  %}
 	
   <div id="app">
 			{% block content  %}
