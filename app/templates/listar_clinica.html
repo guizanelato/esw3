@@ -1,0 +1,56 @@
+{% extends "base.html"  %}
+
+{% block content %}
+
+ <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="11111111111/11" id="first_name" type="text" class="validate">
+          <label for="cpf">CNPJ</label>
+
+
+		  <button class="btn  red lighten-3 col s13" type="submit" name="action">Pesquisar
+					    <i class="material-icons right">send</i>
+							  </button>
+
+			<table>
+        <thead>
+          <tr>
+              <th>CNPJ</th>
+              <th>Razão Social</th>
+              <th>Endereço</th>
+							<th>Planos Atendidos</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1111111111/11</td>
+            <td>Clínica ACME LTDA</td>
+            <td>Rua Acildes Carvalho de Menezes Esposito 22 </td>
+            <td>ACME Silver</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+		</div>
+		
+      </div>
+    </form>
+		
+
+	
+	
+     </div>
+    </form>
+	
+  </div>
+
+	
+
+
+
+{% endblock  %}

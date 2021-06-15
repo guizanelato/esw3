@@ -1,0 +1,108 @@
+{% extends "base.html"  %}
+
+{% block content %}
+
+ <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="CPF" id="first_name" type="text" class="validate">
+          <label for="cpf">CPF</label>
+
+
+		  <button class="btn  red lighten-3 col s13" type="submit" name="action">Pesquisar
+					    <i class="material-icons right">send</i>
+							  </button>
+
+			<table>
+        <thead>
+          <tr>
+              <th>CPF</th>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+							<th>Status</th>
+							<th>Plano</th>
+							<th><a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">mode_edit</i></a> </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>99999999999</td>
+            <td>José da Silva</td>
+            <td>15/04/1989</td>
+            <td>Ativo</td>
+            <td>ACME Silver</td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Nome" id="first_name" type="text" class="validate">
+          <label for="first_name">Nome</label>
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="12/12/2012" id="data_nascimento" type="text" class="validate">
+          <label for="data_nascimento">Data de Nascimento</label>
+        </div>
+		
+		<div class=" col s6" >
+		 <label>Status  </label> <br>
+      <label> 
+        <input name="group1" type="radio" checked />
+        <span>Ativo</span>
+      </label>
+    
+    
+      <label>
+        <input name="group1" type="radio" />
+        <span>Inativo</span>
+      </label>
+
+   </div>
+    
+		<div class=" col s6" >
+		 <label>Plano  </label> <br>
+			<label> 
+				<input name="group2" type="radio" checked />
+				<span>ACME Bronze</span>
+			</label>
+
+
+			<label>
+				<input name="group2" type="radio" />
+				<span>ACME Silver</span>
+			</label>
+			<label>
+				<input name="group2" type="radio" />
+				<span>ACME Gold</span>
+			</label>
+
+		</div>
+		
+		<div class="col s6">
+			
+		  <button class="btn  red lighten-3 col s13" type="submit" name="action">Atualizar
+					    <i class="material-icons right">send</i>
+							  </button>
+</div>
+      </div>
+    </form>
+		
+
+	
+	
+     </div>
+    </form>
+	
+  </div>
+
+	
+
+
+
+{% endblock  %}
