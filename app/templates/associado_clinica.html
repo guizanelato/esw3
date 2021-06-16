@@ -28,12 +28,12 @@
         </thead>
 
         <tbody>
-						
+						{% for clinica in context %}
           <tr>
-						<td>{{ context.razao_social  }}</td>
-						<td>{{ context.endereco }}</td>
+						<td>{{ clinica.razao_social  }}</td>
+						<td>{{ clinica.endereco }}</td>
           </tr>
-
+					{% endfor  %}
 
         </tbody>
 

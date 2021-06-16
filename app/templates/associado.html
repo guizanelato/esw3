@@ -6,7 +6,7 @@
       <a href="#" class="brand-logo right">ACME</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li class="active"><a href="/associado">Associado</a></li>
-        <li><a href="/associado/agendamento">Agendamento</a></li>
+        <li><a href='{{ url_for("associado.associado_agendamentos", cpf=context.cpf)  }}'>Agendamento</a></li>
 				<li><a href='{{ url_for("associado.associado_clinicas", cpf=context.cpf)  }}'>Clinicas</a></li>
       </ul>
     </div>

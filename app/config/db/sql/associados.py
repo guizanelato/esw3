@@ -21,10 +21,34 @@ select_associado_com_plano = """
 
 
 select_associado_clinica = """
-    SELECT c.razao_social, c.endereco
+    SELECT c.razao_social, c.endereco, c.id
     FROM credenciados as c
     INNER JOIN credenciado_plano as cp on cp.credenciado_id=c.id
     INNER JOIN associados as a on a.plano_id = cp.plano_id
     WHERE a.plano_id = %d
 
 """
+
+
+select_agendamentos = """
+    SELECT c.razao_social, a.data, a.status, e.nome
+    FROM agendamentos as a
+    INNER JOIN credenciados as c on c.id=a.credenciado_id
+    INNER JOIN associados as ass on ass.cpf=a.associado_id
+    INNER JOIN especialidades as e on e.id=a.especialidade_id
+    WHERE ass.cpf = %d
+
+"""
+
+select_especialidades = """
+    SELECT e.id, e.nome
+    FROM especialidades as e 
+    INNER JOIN credenciado_especialidades as ce on ce.especialidade_id=e.id
+    INNER JOIN credenciados as cd on cd.id=ce.credenciado_id
+    INNER JOIN credenciado_plano as cp on cp.credenciado_id = cd.id
+    INNER JOIN associados as a on a.plano_id=cp.plano_id
+    WHERE a.cpf = %d
+
+"""
+
+

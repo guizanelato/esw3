@@ -114,11 +114,54 @@ class AssociadoStore(Store):
         try:
             cursor = self.conn.cursor()
             cursor.execute(select_associado_clinica % int(associado.toTuple()[-1]))
-            result = cursor.fetchone()
+            result = cursor.fetchall()
         except Exception as e:
             print("Erro ao selecionar registros de associados:", e)
         else:
-            return {
-                    'razao_social': result[0],
-                    'endereco': result[1]
-            } 
+            return [
+                {
+                    'razao_social': clinica[0],
+                    'endereco': clinica[1],
+                    'credenciado_id': clinica[2]
+                }   for clinica in result
+            ]
+
+    def get_agendamentos(self, associado):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(select_agendamentos % int(associado.toTuple()[0]))
+            result = cursor.fetchall()
+        except Exception as e:
+            print("Erro ao selecionar registros de associados:", e)
+        else:
+
+            if len(result) > 0:
+                return [
+                    {
+                        'razao_social': agendamento[0],
+                        'data': agendamento[1] ,
+                        'status': "Agendado " if agendamento[2] == 1 else "Concluído",
+                        'especialidade': agendamento[3]
+
+                    } for agendamento in result
+                ]
+            return []
+
+    def get_especialidades(self, associado):
+        try:
+            cursor = self.conn.cursor()
+            cursor.execute(select_especialidades % int(associado.toTuple()[0]))
+            result = cursor.fetchall()
+        except Exception as e:
+            print("Erro ao selecionar registros de associados:", e)
+        else:
+
+            if len(result) > 0:
+                return [
+                    {
+                        'id': especialidade[0],
+                        'nome': especialidade[1] ,
+
+                    } for especialidade in result
+                ]
+            return []

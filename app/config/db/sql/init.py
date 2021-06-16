@@ -76,7 +76,7 @@ create_table_credenciado_especialidades = """
 
 create_table_agendamentos = """
     CREATE TABLE agendamentos(
-        id integer primary key not null,
+        id integer primary key not null autoincrement,
         data text,
         credenciado_id integer not null,
         associado_id integer not null,
