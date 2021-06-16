@@ -23,7 +23,7 @@ Para simular localmente o sistema, efetue o clone deste repositório:
 
 ```
 >$ git clone https://github.com/guizanelato/esw3.git
->$ cd app
+>$ cd esw3/app
 >$ pip install -r requirements.txt
 >$ flask run
 ```
