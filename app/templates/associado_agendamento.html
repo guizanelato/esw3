@@ -1,0 +1,84 @@
+{% extends "base.html"  %}
+
+{% block nav %}
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">ACME</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+				<li><a href=" {{ url_for('associado.associado', cpf=request.args.get('cpf') )  }} ">Associado</a></li>
+        <li class="active" ><a href="/associado/agendamento">Agendamento</a></li>
+        <li><a href="/associado/clinicas">Clinicas</a></li>
+      </ul>
+    </div>
+  </nav>
+
+{% endblock  %}
+
+
+
+{% block content %}
+
+
+<form>
+	<div class="container">
+		<input type="date" class="datepicker">
+	</div>
+
+	<div class = "container">
+		<div class="input-field col s12">
+				<select class = "browser-default">
+					<option value="" disabled selected>Escolher Clínica</option>
+					<option value="1">Option 1</option>
+					<option value="2">Option 2</option>
+					<option value="3">Option 3</option>
+				</select>
+			</div>
+	</div>
+
+	<div class="container">
+			<button class="btn  red lighten-3 col s13" type="submit" name="action">agendar
+					<i class="material-icons right">send</i>
+			</button>
+	</div>
+</form>
+
+
+	<div class="container">
+			<br>
+			<span>Agendamentos</span>
+			<table>
+        <thead>
+          <tr>
+              <th>Clinica</th>
+              <th>Data</th>
+							<th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+						
+        </tbody>
+
+      </table>
+  </div>
+
+
+
+	<script>
+			 document.addEventListener('DOMContentLoaded', function() {
+					    var elems = document.querySelectorAll('.datepicker');
+					    M.Datepicker.init(elems, options);
+					  });
+
+  });
+
+
+	
+	</script>
+
+
+
+{% endblock  %}
+
+
+
